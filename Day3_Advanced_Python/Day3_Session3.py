@@ -270,3 +270,40 @@
 # 
 # 
 
+# <codecell>
+
+def fib(n):
+    if n in (0, 1):
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+    
+
+
+# def fib(n):
+#     return 1 if n in (0, 1) else fib(n-1) + fib(n-2)
+
+#print fib(30)
+
+def cached_function(func):
+    cached = dict()
+    def wrapper(n):
+        if n in cached:
+            return cached[n]
+        else:
+            value = func(n)
+            cached[n] = value
+            return value
+    return wrapper
+
+@cached_function
+def fib1(n):
+    return 1 if n in (0, 1) else fib1(n-1) + fib1(n-2)
+
+print fib1(50)
+print fib(30)
+
+import sys
+print [ x for x in dir(sys) if 'recur' in x]
+sys.getrecursionlimit()
+

@@ -11,6 +11,36 @@
 #  - Examples,
 #  - compatibility of python versions
 
+# <codecell>
+
+x = range(10)
+print x
+new_list = []
+for element in x:
+    new_list.append(element*element)
+print new_list
+
+squares = [element*element for element in x]
+print "squares: ", squares
+
+multiples_3 = [element for element in x if element%3==0]
+print "multiples_3, ", multiples_3
+
+# <codecell>
+
+x = [(1, 1000),(2, 2000), (3, 3000)]
+
+y = {key:value for key, value in x if key%3==0}
+print y
+print dict(x)
+
+#SC
+x = range(10) + range(5)
+print x
+
+s = {element for element in x}
+print s
+
 # <markdowncell>
 
 # __Functional Programming Concepts: __
@@ -100,4 +130,61 @@
 #     func(e)      # statement-based loop
 # map(func,lst)           # map()-based loop
 # ```
+
+# <codecell>
+
+def fun_square(x):
+    return x*x
+
+lst = range(4, 20, 3)
+print lst
+
+#mapped_list = map(fun_square, lst)
+#print mapped_list
+
+def divisible_by_4(x):
+    return not x%4
+
+filtered_list = filter(divisible_by_4, lst)
+
+#print filtered_list
+
+def adder(x, y):
+    return x+y
+
+total = reduce(adder, lst)
+print total
+
+def mul(x, y):
+    return x*y
+
+factorial = reduce(mul, range(1,10))
+print factorial
+
+
+
+# <codecell>
+
+# uses of lambda
+x = range(15, 20)
+y = [str(a*a)[1:] for a in x]
+print x
+print y
+
+z = zip(x, y)
+print z
+
+z.sort(key=lambda x: x[1])
+print z
+
+
+
+# <codecell>
+
+x = range(100)
+y = [a*a*a for a in x ]
+z = (a*a*a for a in x )
+print z
+for a in z:
+    print a, 
 

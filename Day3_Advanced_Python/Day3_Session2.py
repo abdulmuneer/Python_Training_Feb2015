@@ -3,6 +3,7 @@
 
 # <markdowncell>
 
+# ###Decorators
 # * Decorators dynamically alter the functionality of a function
 # * They can also alter a method or class without having to directly use subclasses.
 # * This is ideal when you need to extend the functionality of functions that you don't want to modify.
@@ -24,7 +25,9 @@ def greet(name):
     return "Hi ", name
 
 say_hi = greet
-#print say_hi("Alice")
+print say_hi("Alice")
+numbers = range
+print numbers(10)
 
 # <markdowncell>
 
@@ -103,6 +106,17 @@ print greet()
 # 
 # # Outputs: Hello there John!
 # ```
+
+# <codecell>
+
+def compose_greet_func(name):
+    def get_message():
+        return "Hello there "+name+"!"
+
+    return get_message
+
+greet = compose_greet_func("John")
+print greet()
 
 # <markdowncell>
 
@@ -217,7 +231,7 @@ def div_decorate(func):
 # <codecell>
 
 @div_decorate
-@p_decorate
+#@p_decorate
 @strong_decorate
 def get_text(name):
    return "Hello, {0}".format(name)
@@ -292,6 +306,7 @@ def tags(tag_name):
         return func_wrapper
     return tags_decorator
 
+@tags("strong")
 @tags("p")
 def get_text(name):
     return "Hello "+name

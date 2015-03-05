@@ -2,9 +2,9 @@
 
 import pdb
 
-a = "aaa"
+a1 = "aaa"
 pdb.set_trace()
-b = "bbb"
-c = "ccc"
-final = a + b + c
+b1 = "bbb"
+c1 = "ccc"
+final = a1 + b1 + c1
 print final
